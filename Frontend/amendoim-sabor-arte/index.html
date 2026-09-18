@@ -1,0 +1,225 @@
+<!DOCTYPE html> <!-- utiliza do HTML5 -->
+<html lang="pt-BR"> <!-- configuração do idioma -->
+
+  <head> <!-- abertura da configuração interna do site -->
+    <meta charset="UTF-8" /> <!-- ativa os caracteres em português -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- ajustar o tamanho e a escala de uma página -->
+    <title>Amendoim Sabor Arte - Amendoim Caramelizado Artesanal</title> <!-- título da página -->
+    <link rel="stylesheet" href="styles.css" /> <!-- conecta o css -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" /> <!-- conectas o servidor ao Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> <!-- conecta o servidor do Google Fonts antes de toda a página -->
+    <!-- Importa e carrega a fonte usada na página -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  </head> <!-- fechamento da configuração interna do site -->
+  
+  <body> <!-- abertura da página -->
+    
+    <header class="header"><!-- abertura do cabeçalho -->
+      <nav class="nav"><!-- abertura do navegador do cabeçalho -->
+        <div class="logo">Amendoim Sabor Arte</div> <!-- Nome do bloco -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links" id="navLinks"> <!-- abertura da lista não ordenada -->>
+          <li><a href="#home">Início</a></li><!-- links do menu-->>
+          <li><a href="#produto">Produto</a></li><!-- links do menu-->>
+          <li><a href="#sobre">Sobre</a></li><!-- links do menu-->>
+          <li><a href="#contato">Contato</a></li><!-- links do menu-->>
+        </ul><!-- fechamento da lista não ordenada -->>
+      </nav><!-- fechamento do navegador do cabeçalho -->>
+    </header><!-- fechamento do cabeçalho -->
+
+    <!-- Hero Section -->
+    <section class="hero" id="home"> <!-- alinha de forma vertical-->>
+      <div class="hero-content"><!-- divisóia  de informações-->
+        <h1 class="hero-title">Amendoim Sabor Arte</h1>
+        <p class="hero-subtitle">O sabor irresistível do amendoim caramelizado artesanal</p>
+        <a href="#contato" class="cta-button">Faça seu pedido</a> <!-- link de redirecionamento -->
+      </div><!-- fechamento da divisóia  de informações-->
+    </section> <!-- fecha o alinhamento vertical -->
+
+    <!-- Produto Section -->
+    <section class="produto-section" id="produto"><!-- alinha toda o bloco -->
+      <div class="container"><!-- container para centralizar o conteúdo -->
+        <h2 class="section-title">Nosso Produto</h2> <!-- título da seção -->
+        <div class="produto-card"> <!-- cartão do produto -->
+          <div class="produto-image"> <!-- bloco de imagem do produto -->
+            <img src="/placeholder.svg?height=400&width=400" alt="Amendoim Caramelizado"/> <!-- imagem do produto -->
+          </div><!-- fechamento do bloco de imagem do produto -->
+          <div class="produto-info"><!-- informações do produto -->
+            <h3 class="produto-nome">Amendoim Caramelizado</h3> <!-- nome do produto -->
+            <p class="produto-descricao"><!-- descrição do produto -->
+              Nosso amendoim caramelizado é preparado artesanalmente com açúcar
+              e um toque de corante vermelho, criando uma coloração vibrante e
+              atraente. Cada unidade é cuidadosamente selecionada para garantir
+              a crocância perfeita e o sabor irresistível que conquista todos
+              que experimentam.
+            </p>
+            <div class="produto-destaque"><!-- destaques do produto -->
+              <div class="destaque-item"><!-- item de destaque -->
+                <svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                ><!-- ícone de estrela -->
+                  <path
+                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                  ></path><!-- ícone de estrela -->
+                </svg>
+                <span>100% Artesanal</span>
+              </div><!-- item de destaque -->
+              <div class="destaque-item"><!-- item de destaque -->
+                <svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                  ></path>
+                </svg>
+                <span>Sabor Único</span>
+              </div>
+              <div class="destaque-item">
+                <svg
+                  class="icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 6v6l4 2"></path>
+                </svg>
+                <span>Sempre Fresco</span>
+              </div>
+            </div>
+            <a href="#contato" class="btn-comprar">Comprar agora</a>
+          </div>
+        </div>
+      </div>
+    </section><!-- fecha o alinhamento vertical -->
+
+    <!-- Sobre Section -->
+    <section class="sobre-section" id="sobre"><!-- seção sobre -->
+      <div class="container">
+        <div class="sobre-content">
+          <div class="sobre-texto">
+            <h2 class="section-title">Sobre Nós</h2>
+            <p>
+              Na <strong>Amendoim Sabor Arte</strong>, transformamos o simples
+              amendoim em uma verdadeira obra de arte gastronômica. Nossa paixão
+              está em criar o amendoim caramelizado perfeito, com aquela
+              crocância irresistível e sabor que marca a memória.
+            </p>
+            <p>
+              Cada lote é preparado artesanalmente com ingredientes
+              selecionados: amendoins de alta qualidade, açúcar cristal e um
+              toque especial de corante vermelho que dá aquela cor vibrante e
+              apetitosa que chama a atenção.
+            </p>
+            <p>
+              O segredo está no cuidado de cada etapa da produção, garantindo
+              que cada amendoim tenha a caramelização uniforme e a textura
+              crocante que fazem do nosso produto algo único e inesquecível.
+            </p>
+          </div>
+          <div class="sobre-imagem">
+            <img
+              src="/placeholder.svg?height=500&width=500"
+              alt="Processo Artesanal"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Depoimento Section -->
+    <section class="depoimento-section">
+      <div class="container">
+        <div class="depoimento-card">
+          <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"></path>
+          </svg>
+          <p class="depoimento-texto">
+            Todos que experimentam nosso amendoim caramelizado se apaixonam pelo
+            sabor único e pela textura perfeita. A combinação da crocância com o
+            caramelo e aquele toque especial conquista desde a primeira mordida.
+            É impossível comer apenas um! Nossos clientes sempre voltam pedindo
+            mais e indicam para amigos e familiares.
+          </p>
+          <div class="depoimento-autor">
+            <strong>Amendoim Sabor Arte</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contato Section -->
+    <section class="contato-section" id="contato">
+      <div class="container">
+        <h2 class="section-title">Entre em Contato</h2>
+        <div class="contato-grid">
+          <div class="contato-info">
+            <h3>Faça seu Pedido</h3>
+            <p>
+              Entre em contato conosco para fazer seu pedido ou tirar dúvidas.
+              Estamos prontos para atendê-lo!
+            </p>
+            <div class="contato-item">
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                ></path>
+              </svg>
+              <span>+55 (11) 99901-6165</span>
+            </div>
+            <div class="contato-item">
+              <svg
+                class="icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                ></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+              <span>edilsonrmaia@hotmail.com</span>
+            </div>
+          </div>
+          <form class="contato-form" id="contatoForm">
+            <input type="text" placeholder="Seu nome" required />
+            <input type="email" placeholder="Seu e-mail" required />
+            <input type="tel" placeholder="Seu telefone" required />
+            <textarea placeholder="Sua mensagem" rows="5" required></textarea>
+            <button type="submit" class="btn-enviar">Enviar mensagem</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 Amendoim Sabor Arte. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body> <!-- fechamento da página -->
+</html>

@@ -1,0 +1,35 @@
+                    CLIENTE
+                       │
+                       ▼
+              Site / WhatsApp
+                       │
+                       ▼
+             ┌────────────┐
+             │   BACK-END JAVA │
+             │   Regras de     │
+             │   negócio       │
+             └──────┬─────┘
+                      │
+       ┌──────────┼───────────┐
+       ▼              ▼              ▼
+   Pedidos         Estoque        Financeiro
+       │              │               │
+       └──────────┼───────────┘
+                      ▼
+               BANCO MYSQL
+                      │
+                      ▼
+             Painel Administrativo
+                      │
+                      ▼
+                  Entregas
+
+| Camada              | Tecnologia                   |
+| ------------------- | ---------------------------- |
+| Front-end           | HTML, CSS e JavaScript       |
+| Back-end            | Java                         |
+| API                 | REST                         |
+| Banco de dados      | MySQL                        |
+| Comunicação         | JSON                         |
+| Automação           | Regras de negócio em Java    |
+| Atendimento virtual | Chatbot integrado ao sistema |

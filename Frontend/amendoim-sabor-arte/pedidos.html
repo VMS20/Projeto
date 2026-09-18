@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realizar Pedido - Amendoim Doce</title>
+    <link rel="stylesheet" href="pedidos.css">
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         CABEÇALHO
+    ========================== -->
+
+    <header class="top-header">
+
+        <div class="logo-area">
+
+            <img 
+                src="logo.png" 
+                alt="Logo da Amendoim Doce"
+            >
+
+            <div class="empresa">
+
+                <h1>Amendoim Doce</h1>
+
+                <p>Sabor que conquista!</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="cliente-area">
+            <span class="carrinho">&#128722;</span>
+            <span>Olá, Cliente</span>
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================
+         MENU LATERAL
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <nav>
+
+            <ul>
+
+                <li>
+                    <a href="index.html">
+                        &#8962; &nbsp; Início
+                    </a>
+                </li>
+
+                <li>
+                    <a href="pedido.html" class="ativo">
+                        &#128722; &nbsp; Fazer Pedido
+                    </a>
+                </li>
+
+                <li>
+                    <a href="pedidos.html">
+                        &#128197; &nbsp; Meus Pedidos
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contato.html">
+                        &#9993; &nbsp; Contato
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- =========================
+         CONTEÚDO PRINCIPAL
+    ========================== -->
+
+    <main class="conteudo">
+
+
+        <!-- TÍTULO -->
+
+        <div class="titulo-pagina">
+
+            <h1>&#128722; Realizar pedido</h1>
+
+            <p>
+                Preencha as informações abaixo para finalizar seu pedido.
+            </p>
+
+        </div>
+
+
+
+        <!-- =========================
+             1 - PRODUTOS
+        ========================== -->
+
+        <section class="card">
+
+            <div class="titulo-secao">
+
+                <span class="numero">1</span>
+
+                <div>
+
+                    <h2>Produtos</h2>
+
+                    <p>
+                        Escolha os produtos e as quantidades desejadas.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="produto">
+
+                <img 
+                    src="produto1.jpg" 
+                    alt="Amendoim doce tradicional"
+                >
+
+
+                <div class="produto-info">
+
+                    <h3>Amendoim doce tradicional</h3>
+
+                    <p>Embalagem: 100g</p>
+
+                    <strong>R$ 6,50</strong>
+
+                </div>
+
+
+                <div class="quantidade">
+
+                    <label for="quantidade">
+                        Quantidade
+                    </label>
+
+                    <input 
+                        type="number"
+                        id="quantidade"
+                        name="quantidade"
+                        min="1"
+                        value="1"
+                    >
+
+                </div>
+
+
+                <div class="subtotal">
+
+                    <span>Subtotal</span>
+
+                    <strong>R$ 6,50</strong>
+
+                </div>
+
+            </div>
+
+
+            <button type="button" class="btn-produto">
+                + Adicionar outro produto
+            </button>
+
+        </section>
+
+
+
+        <!-- =========================
+             2 - DADOS DO CLIENTE
+        ========================== -->
+
+        <section class="card">
+
+            <div class="titulo-secao">
+
+                <span class="numero">2</span>
+
+                <div>
+
+                    <h2>Dados do cliente</h2>
+
+                    <p>
+                        Informe seus dados para que possamos entrar em contato.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-grid">
+
+                <div class="campo campo-grande">
+
+                    <label for="nome">
+                        Nome completo *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        placeholder="Digite seu nome completo"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="telefone">
+                        Telefone/WhatsApp *
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="telefone"
+                        name="telefone"
+                        placeholder="(11) 99999-9999"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="email">
+                        E-mail
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="exemplo@email.com"
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="cpf">
+                        CPF
+                    </label>
+
+                    <input
+                        type="text"
+                        id="cpf"
+                        name="cpf"
+                        placeholder="000.000.000-00"
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             3 - ENTREGA
+        ========================== -->
+
+        <section class="card">
+
+            <div class="titulo-secao">
+
+                <span class="numero">3</span>
+
+                <div>
+
+                    <h2>Entrega</h2>
+
+                    <p>
+                        Informe o tipo de entrega e o endereço.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Tipo de entrega -->
+
+            <div class="opcoes">
+
+                <label class="opcao-radio">
+
+                    <input
+                        type="radio"
+                        id="entrega"
+                        name="tipo-entrega"
+                        value="entrega"
+                        checked
+                    >
+
+                    <span>Entrega</span>
+
+                </label>
+
+
+                <label class="opcao-radio">
+
+                    <input
+                        type="radio"
+                        id="retirada"
+                        name="tipo-entrega"
+                        value="retirada"
+                    >
+
+                    <span>Retirada no local</span>
+
+                </label>
+
+            </div>
+
+
+            <!-- Endereço -->
+
+            <div class="form-grid">
+
+
+                <div class="campo">
+
+                    <label for="cep">
+                        CEP *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="cep"
+                        name="cep"
+                        placeholder="00000-000"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="estado">
+                        Estado *
+                    </label>
+
+                    <select id="estado" name="estado">
+
+                        <option value="">
+                            Selecione
+                        </option>
+
+                        <option value="SP">
+                            São Paulo
+                        </option>
+
+                        <option value="RJ">
+                            Rio de Janeiro
+                        </option>
+
+                        <option value="MG">
+                            Minas Gerais
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="cidade">
+                        Cidade *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="cidade"
+                        name="cidade"
+                        placeholder="Digite sua cidade"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="bairro">
+                        Bairro *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="bairro"
+                        name="bairro"
+                        placeholder="Digite o bairro"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo campo-grande">
+
+                    <label for="rua">
+                        Rua/Avenida *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="rua"
+                        name="rua"
+                        placeholder="Digite o nome da rua"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="numero-endereco">
+                        Número *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="numero-endereco"
+                        name="numero-endereco"
+                        placeholder="Número"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="complemento">
+                        Complemento
+                    </label>
+
+                    <input
+                        type="text"
+                        id="complemento"
+                        name="complemento"
+                        placeholder="Apto, bloco etc."
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="referencia">
+                        Ponto de referência
+                    </label>
+
+                    <input
+                        type="text"
+                        id="referencia"
+                        name="referencia"
+                        placeholder="Ex.: próximo ao mercado"
+                    >
+
+                </div>
+
+
+                <div class="campo campo-grande">
+
+                    <label for="observacao">
+                        Observações
+                    </label>
+
+                    <input
+                        type="text"
+                        id="observacao"
+                        name="observacao"
+                        placeholder="Observações para o entregador"
+                    >
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             4 - PAGAMENTO
+        ========================== -->
+
+        <section class="card">
+
+            <div class="titulo-secao">
+
+                <span class="numero">4</span>
+
+                <div>
+
+                    <h2>Pagamento</h2>
+
+                    <p>
+                        Escolha a forma de pagamento.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="pagamentos">
+
+
+                <label class="pagamento">
+
+                    <input
+                        type="radio"
+                        name="pagamento"
+                        value="pix"
+                        checked
+                    >
+
+                    <div>
+
+                        <strong>PIX</strong>
+
+                        <p>Pagamento instantâneo</p>
+
+                    </div>
+
+                </label>
+
+
+                <label class="pagamento">
+
+                    <input
+                        type="radio"
+                        name="pagamento"
+                        value="cartao"
+                    >
+
+                    <div>
+
+                        <strong>Cartão de crédito/débito</strong>
+
+                        <p>Pagamento com cartão</p>
+
+                    </div>
+
+                </label>
+
+
+                <label class="pagamento">
+
+                    <input
+                        type="radio"
+                        name="pagamento"
+                        value="dinheiro"
+                    >
+
+                    <div>
+
+                        <strong>Dinheiro</strong>
+
+                        <p>Pagamento na entrega ou retirada</p>
+
+                    </div>
+
+                </label>
+
+            </div>
+
+
+            <div class="campo campo-pequeno">
+
+                <label for="troco">
+                    Troco (apenas para pagamento em dinheiro)
+                </label>
+
+                <input
+                    type="text"
+                    id="troco"
+                    name="troco"
+                    placeholder="R$ 0,00"
+                >
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             5 - RESUMO
+        ========================== -->
+
+        <section class="card">
+
+            <div class="titulo-secao">
+
+                <span class="numero">5</span>
+
+                <div>
+
+                    <h2>Resumo do pedido</h2>
+
+                    <p>
+                        Confira as informações antes de finalizar.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="tabela-container">
+
+                <table class="tabela-resumo">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Produto</th>
+
+                            <th>Quantidade</th>
+
+                            <th>Subtotal</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                Amendoim doce tradicional
+                            </td>
+
+                            <td>
+                                1
+                            </td>
+
+                            <td>
+                                R$ 6,50
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <div class="valores">
+
+                <div>
+
+                    <span>Subtotal</span>
+
+                    <strong>R$ 6,50</strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>Taxa de entrega</span>
+
+                    <strong>R$ 3,00</strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>Desconto</span>
+
+                    <strong>R$ 0,00</strong>
+
+                </div>
+
+
+                <div class="valor-total">
+
+                    <span>Valor total</span>
+
+                    <strong>R$ 9,50</strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             6 - FINALIZAR
+        ========================== -->
+
+        <section class="card finalizar">
+
+            <div class="titulo-secao">
+
+                <span class="numero">6</span>
+
+                <div>
+
+                    <h2>Finalizar pedido</h2>
+
+                    <p>
+                        Revise todas as informações e confirme seu pedido.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <label class="termos">
+
+                <input
+                    type="checkbox"
+                    required
+                >
+
+                <span>
+                    Li e concordo com os termos de uso e política de privacidade.
+                </span>
+
+            </label>
+
+
+            <button
+                type="submit"
+                class="btn-finalizar"
+            >
+                &#10003; Confirmar pedido
+            </button>
+
+
+            <p class="seguranca">
+                &#128274; Seus dados estão seguros.
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+</body>
+
+</html>
