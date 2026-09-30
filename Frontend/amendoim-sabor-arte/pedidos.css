@@ -1,6 +1,9 @@
 /* ========================================
    RESET
 ======================================== */
+[hidden] { display: none !important; }
+.btn-sair { border: 0; background: transparent; color: white; cursor: pointer; font: inherit; padding: 14px 25px; }
+.btn-sair:hover, .btn-sair:focus-visible { background: var(--caramel); }
 
 * {
     margin: 0;
@@ -87,7 +90,7 @@ body {
 
 .empresa p {
     font-size: 0.8rem;
-    color: var(--caramel);
+    color: var(--caramel-dark);
     font-weight: 600;
 }
 
@@ -463,7 +466,7 @@ body {
 
     outline: none;
 
-    border-color: var(--caramel);
+    border-color: var(--caramel-dark);
 
     box-shadow: 0 0 0 3px rgba(210, 105, 30, 0.12);
 
@@ -500,7 +503,7 @@ body {
 
 .opcao-radio input {
 
-    accent-color: var(--caramel);
+    accent-color: var(--caramel-dark);
 
 }
 
@@ -545,7 +548,7 @@ body {
 
 .pagamento:hover {
 
-    border-color: var(--caramel);
+    border-color: var(--caramel-dark);
 
     background: #fffaf3;
 
@@ -554,7 +557,7 @@ body {
 
 .pagamento input {
 
-    accent-color: var(--caramel);
+    accent-color: var(--caramel-dark);
 
 }
 
@@ -875,4 +878,37 @@ body {
 
     }
 
+}
+
+/* Identidade visual */
+body { background: #fcf6eb; color: #432c20; }
+.top-header { background: #fffcf7; border-color: #eadbca; }
+.sidebar { background: #6e3514; }
+.sidebar nav a.ativo, .sidebar nav a:hover, .btn-sair:hover { background: #9a542b; }
+.logo-area img { border-radius: 50%; }
+.card { border-color: #eadbca; box-shadow: 0 6px 24px #673a1106; border-radius: 14px; padding: 28px; }
+.numero { background: #8b4513; width: 36px; height: 36px; }
+.titulo-pagina h1 { color: #8b4513; font-size: 2.2rem; }
+.titulo-pagina p, .titulo-secao p { color: #766253; }
+.produto { background: #fffcf7; border-color: #eadbca; }
+.campo input, .campo select, .quantidade input { background: #fffcf7; border: 1px solid #eadbca; min-height: 46px; border-radius: 8px; padding: 10px 12px; }
+.pagamento { border-color: #eadbca; }
+.tabela-resumo th { background: #f6ead7; }
+.valor-total { background: #f6ead7; }
+.btn-finalizar { background: #8b4513; }
+.btn-finalizar:hover { background: #6e3514; }
+.finalizar { border-top-color: #d2691e; }
+.termos input { accent-color: #8b4513; }
+@media (max-width: 700px) { .card { padding: 20px; } .opcoes { flex-wrap: wrap; gap: 12px; } .titulo-pagina h1 { font-size: 1.7rem; } .termos { align-items: flex-start; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }.product-caption { color:#766253; font-size:12px; margin-top:14px; }
+.produto img { object-fit:cover; border-radius:8px; }
+.card { box-shadow:none; }
+.btn-finalizar:disabled { background:#705943; cursor:not-allowed; transform:none; }
+.campo input::placeholder { color:#766253; opacity:1; }
+input:focus-visible, button:focus-visible, a:focus-visible { outline:3px solid #d2691e; outline-offset:3px; }
+.finalizar { border-top-width:1px; border-top-color:#eadbca; }
+@media (max-width:700px) {
+ .sidebar nav ul { display:grid; grid-template-columns:1fr 1fr; overflow:visible; }
+ .sidebar nav li { min-width:0; }
+ .sidebar nav a, .btn-sair { display:block; width:100%; padding:12px 18px; text-align:left; }
 }

@@ -5,12 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Realizar Pedido - Amendoim Doce</title>
+    <title>Realizar Pedido - Amendoim Sabor Arte</title>
     <link rel="stylesheet" href="pedidos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 
 
-<body>
+<body data-page="orders">
 
 
     <!-- =========================
@@ -21,14 +22,11 @@
 
         <div class="logo-area">
 
-            <img 
-                src="logo.png" 
-                alt="Logo da Amendoim Doce"
-            >
+
 
             <div class="empresa">
 
-                <h1>Amendoim Doce</h1>
+                <h1>Amendoim Sabor Arte</h1>
 
                 <p>Sabor que conquista!</p>
 
@@ -38,8 +36,8 @@
 
 
         <div class="cliente-area">
-            <span class="carrinho">&#128722;</span>
-            <span>Olá, Cliente</span>
+
+            <span data-user-name>Minha conta</span>
         </div>
 
     </header>
@@ -58,28 +56,25 @@
 
                 <li>
                     <a href="index.html">
-                        &#8962; &nbsp; Início
+                        Início
                     </a>
                 </li>
 
                 <li>
-                    <a href="pedido.html" class="ativo">
-                        &#128722; &nbsp; Fazer Pedido
+                    <a href="pedidos.html" class="ativo">
+                        Fazer Pedido
                     </a>
                 </li>
+
+
 
                 <li>
-                    <a href="pedidos.html">
-                        &#128197; &nbsp; Meus Pedidos
+                    <a href="index.html#contato">
+                        Contato
                     </a>
                 </li>
 
-                <li>
-                    <a href="contato.html">
-                        &#9993; &nbsp; Contato
-                    </a>
-                </li>
-
+                <li><button type="button" class="btn-sair" data-logout>Sair da conta</button></li>
             </ul>
 
         </nav>
@@ -92,17 +87,18 @@
          CONTEÚDO PRINCIPAL
     ========================== -->
 
-    <main class="conteudo">
+    <p id="session-notice" class="conteudo" role="alert" hidden></p>
+    <main class="conteudo" hidden>
 
 
         <!-- TÍTULO -->
 
         <div class="titulo-pagina">
 
-            <h1>&#128722; Realizar pedido</h1>
+            <h1>Realizar pedido</h1>
 
             <p>
-                Preencha as informações abaixo para finalizar seu pedido.
+                Explore a prévia do pedido. Os valores são demonstrativos; o envio de pedidos ainda está em desenvolvimento.
             </p>
 
         </div>
@@ -134,9 +130,9 @@
 
             <div class="produto">
 
-                <img 
-                    src="produto1.jpg" 
-                    alt="Amendoim doce tradicional"
+                <img
+                    src="amendoim-caramelizado.png"
+                    alt="Imagem ilustrativa de amendoim caramelizado"
                 >
 
 
@@ -157,11 +153,11 @@
                         Quantidade
                     </label>
 
-                    <input 
+                    <input
                         type="number"
                         id="quantidade"
                         name="quantidade"
-                        min="1"
+                        min="1" max="99" step="1"
                         value="1"
                     >
 
@@ -179,9 +175,7 @@
             </div>
 
 
-            <button type="button" class="btn-produto">
-                + Adicionar outro produto
-            </button>
+            <p class="product-caption">Imagem ilustrativa. Embalagem e preço demonstrativos.</p>
 
         </section>
 
@@ -766,15 +760,15 @@
 
 
             <button
-                type="submit"
+                type="button" disabled aria-describedby="order-status"
                 class="btn-finalizar"
             >
-                &#10003; Confirmar pedido
+                Envio de pedidos em breve
             </button>
 
 
-            <p class="seguranca">
-                &#128274; Seus dados estão seguros.
+            <p class="seguranca" id="order-status">
+                Esta prévia não envia pedidos nem realiza cobranças.
             </p>
 
         </section>
@@ -783,6 +777,7 @@
     </main>
 
 
+    <script src="auth.js" defer></script><script src="orders.js" defer></script>
 </body>
 
 </html>

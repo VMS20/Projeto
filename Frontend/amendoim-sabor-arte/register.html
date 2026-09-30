@@ -6,192 +6,42 @@
     <title>Cadastro - Amendoim Sabor Arte</title>
     <!-- Mesmas fontes da marca -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-    
-    <style>
-        :root {
-            --caramel-dark: #8b4513;
-            --caramel: #d2691e;
-            --caramel-light: #f4a460;
-            --gold: #ffd700;
-            --red: #c41e3a;
-            --cream: #fff8dc;
-            --white: #ffffff;
-            --gray-dark: #333333;
-            --gray: #666666;
-            --gray-light: #f5f5f5;
-            --font-display: "Playfair Display", serif;
-            --font-body: "Inter", sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-body);
-            background: linear-gradient(135deg, var(--cream) 0%, #e9dcc9 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-        }
-
-        .register-container {
-            background-color: var(--white);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 450px;
-            text-align: center;
-            border-top: 5px solid var(--caramel);
-        }
-
-        .logo-brand {
-            font-family: var(--font-display);
-            font-size: 1.8rem;
-            color: var(--caramel-dark);
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            color: var(--gray);
-            font-size: 0.9rem;
-            margin-bottom: 25px;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            text-align: left;
-        }
-
-        .form-group {
-            margin-bottom: 5px;
-        }
-
-        label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--gray-dark);
-            margin-bottom: 5px;
-        }
-
-        input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            outline: none;
-        }
-
-        input:focus {
-            border-color: var(--caramel);
-            box-shadow: 0 0 0 2px rgba(210, 105, 30, 0.1);
-        }
-
-        .terms-group {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin: 10px 0;
-            font-size: 0.85rem;
-            color: var(--gray);
-        }
-
-        .terms-group input {
-            width: auto;
-            margin-top: 3px;
-        }
-
-        .btn-register {
-            width: 100%;
-            background-color: var(--caramel);
-            color: var(--white);
-            border: none;
-            padding: 14px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-family: var(--font-body);
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            margin-top: 15px;
-        }
-
-        .btn-register:hover {
-            background-color: var(--caramel-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(139, 69, 19, 0.3);
-        }
-
-        .footer-links {
-            margin-top: 25px;
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-
-        .footer-links a {
-            color: var(--caramel);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .footer-links a:hover {
-            text-decoration: underline;
-        }
-
-        #error-message {
-            color: var(--red);
-            font-size: 0.85rem;
-            margin-top: 15px;
-            display: none;
-            background-color: #ffebee;
-            padding: 10px;
-            border-radius: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="account.css">
 </head>
 <body>
+    <header class="account-header"><a href="index.html" class="account-brand">Amendoim Sabor Arte</a><a href="index.html" class="back-to-site">Voltar ao site</a></header>
+    <main class="account-shell">
+      <aside class="account-story"><div><h2>O sabor que aproxima.</h2><p>Amendoim caramelizado artesanal para acompanhar seus bons momentos.</p></div><figure class="account-product"><img src="amendoim-caramelizado.png" alt="Amendoim caramelizado em uma tigela de cerâmica" width="1122" height="1402"><figcaption>Imagem ilustrativa do produto.</figcaption></figure></aside>
 
     <div class="register-container">
-        <div class="logo-brand">Amendoim Sabor Arte</div>
-        <p class="subtitle">Crie sua conta e descubra novos sabores</p>
+        <h1 class="account-title">Crie sua conta.</h1>
+        <p class="subtitle">Crie sua conta para fazer pedidos. É simples e rápido.</p>
 
         <form id="register-form">
             <div class="form-grid">
-                <div class="form-group">
+                <div class="form-group field-wide">
                     <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" placeholder="Seu nome" required>
+                    <input type="text" id="nome" autocomplete="name" minlength="2" maxlength="100" placeholder="Seu nome" required>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group field-wide">
                     <label for="email">E-mail</label>
-                    <input type="email" id="email" placeholder="seu@email.com" required>
+                    <input type="email" id="email" autocomplete="email" maxlength="254" placeholder="seu@email.com" required>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group field-wide">
                     <label for="tel">Telefone / WhatsApp</label>
-                    <input type="tel" id="tel" placeholder="(00) 00000-0000" required>
+                    <input type="tel" id="tel" autocomplete="tel" maxlength="20" placeholder="(00) 00000-0000" required>
                 </div>
 
                 <div class="form-group">
                     <label for="password">Senha</label>
-                    <input type="password" id="password" placeholder="Mínimo 6 caracteres" required>
+                    <input type="password" id="password" minlength="6" maxlength="128" autocomplete="new-password" placeholder="Mínimo 6 caracteres" required>
                 </div>
 
                 <div class="form-group">
                     <label for="confirm-password">Confirmar Senha</label>
-                    <input type="password" id="confirm-password" placeholder="Repita a senha" required>
+                    <input type="password" id="confirm-password" autocomplete="new-password" minlength="6" maxlength="128" placeholder="Repita a senha" required>
                 </div>
             </div>
 
@@ -201,44 +51,17 @@
             </div>
 
             <button type="submit" class="btn-register">Criar minha conta</button>
-            
-            <p id="error-message"></p>
+
+            <p role="alert" id="error-message"></p>
         </form>
 
         <div class="footer-links">
             <p>Já possui uma conta? <a href="login.html">Entre aqui</a></p>
-            <p style="margin-top: 10px;"><a href="index.html" style="font-weight: 400; color: var(--gray);">← Voltar ao site</a></p>
         </div>
     </div>
 
-    <script>
-        const form = document.getElementById('register-form');
-        const errorMessage = document.getElementById('error-message');
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirm-password').value;
-
-            // Validação simples de senha
-            if (password !== confirmPassword) {
-                errorMessage.textContent = "As senhas não coincidem!";
-                errorMessage.style.display = "block";
-                return;
-            }
-
-            if (password.length < 6) {
-                errorMessage.textContent = "A senha deve ter pelo menos 6 caracteres!";
-                errorMessage.style.display = "block";
-                return;
-            }
-
-            // Sucesso
-            errorMessage.style.display = "none";
-            alert("Cadastro realizado com sucesso! Bem-vindo à família Sabor Arte.");
-            window.location.href = "login.html";
-        });
-    </script>
+    </main>
+    <footer class="account-footer">Amendoim Sabor Arte · O sabor que aproxima.</footer>
+    <script src="auth.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,64 @@
+:root { --caramel-dark: #8b4513; --caramel: #d2691e; --cream: #fff8dc; --ink: #432c20; --muted: #766253; --border: #eadbca; --font-display: "Playfair Display", Georgia, serif; --font-body: "Inter", sans-serif; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+[hidden] { display: none !important; }
+body { min-height: 100vh; font-family: var(--font-body); color: var(--ink); background: #fcf6eb; }
+a { color: var(--caramel-dark); text-underline-offset: 4px; }
+.account-header { max-width: 1160px; margin: auto; padding: 28px 32px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.account-brand { font-family: var(--font-display); font-size: 22px; font-weight: 700; text-decoration: none; }
+.back-to-site { color: var(--muted); font-size: 13px; text-decoration: none; }
+.back-to-site:hover { color: var(--caramel-dark); text-decoration: underline; }
+.account-shell { width: min(1096px, calc(100% - 64px)); margin: 12px auto 28px; display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--border); border-radius: 24px; overflow: hidden; background: white; box-shadow: 0 20px 70px #673a1110; }
+.account-story { padding: 56px 48px 40px; position: relative; overflow: hidden; background: #8b4513; color: #fff8dc; display: flex; flex-direction: column; justify-content: space-between; gap: 56px; }
+.story-label, .form-eyebrow { font-size: 11px; letter-spacing: .15em; font-weight: 600; text-transform: uppercase; }
+.story-label { color: #ffe1a4; display: flex; align-items: center; gap: 10px; }
+.story-label::before { content: ""; width: 26px; height: 1px; background: currentColor; }
+.account-story h2 { font-family: var(--font-display); font-size: clamp(36px, 4vw, 52px); line-height: 1.17; font-weight: 400; margin: 28px 0 22px; letter-spacing: -.025em; }
+.account-story h2 em { color: #ffd98e; font-weight: 400; }
+.account-story p { max-width: 330px; color: #f3dbc4; font-size: 14px; line-height: 1.85; }
+.story-footer { position: relative; z-index: 1; border-top: 1px solid #fff8dc35; padding-top: 24px; }
+.story-footer strong { display: block; font-family: var(--font-display); font-size: 21px; font-weight: 400; margin-bottom: 8px; }
+.story-footer span { color: #f3dbc4; font-size: 12px; }
+.login-container, .register-container { min-width: 0; padding: 44px 44px 36px; }
+.form-eyebrow { color: var(--caramel); margin-bottom: 12px; }
+.account-title { font-family: var(--font-display); font-weight: 400; font-size: 34px; letter-spacing: -.025em; margin-bottom: 10px; }
+.subtitle { color: var(--muted); font-size: 13px; line-height: 1.7; margin-bottom: 28px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 14px; }
+.form-group { margin-bottom: 20px; }
+.form-grid .form-group { margin: 0; }
+.field-wide { grid-column: 1 / -1; }
+label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 8px; }
+input:not([type="checkbox"]) { width: 100%; min-height: 48px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 9px; background: #fffcf7; color: var(--ink); font-family: inherit; font-size: 14px; transition: border-color .2s, box-shadow .2s; }
+input::placeholder { color: #766253; opacity: 1; }
+input:focus-visible { outline: 0; border-color: var(--caramel); box-shadow: 0 0 0 3px #d2691e18; }
+.field-hint { color: var(--muted); font-size: 11px; margin-top: 7px; }
+.terms-group { display: flex; align-items: flex-start; gap: 10px; margin: 22px 0; }
+.terms-group input { margin-top: 3px; accent-color: var(--caramel-dark); width: 16px; height: 16px; flex-shrink: 0; }
+.terms-group label { font-size: 11px; font-weight: 400; color: var(--muted); line-height: 1.7; margin: 0; }
+.btn-login, .btn-register { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 49px; padding: 14px 18px; border: 0; border-radius: 9px; background: var(--caramel-dark); color: white; font: 600 13px var(--font-body); cursor: pointer; transition: background .2s; }
+.btn-login:hover, .btn-register:hover { background: #6c330f; }
+button:disabled { opacity: .65; cursor: wait; }
+a:focus-visible, button:focus-visible { outline: 3px solid #d2691e; outline-offset: 4px; }
+#error-message { display: none; background: #fff0ec; border: 1px solid #edc7bb; color: #952b25; border-radius: 8px; padding: 12px; margin-top: 16px; font-size: 12px; line-height: 1.6; }
+#login-notice { background: #f0f5e8; color: #46582c; padding: 12px; border-radius: 8px; font-size: 12px; line-height: 1.6; margin-bottom: 20px; }
+.footer-links { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--border); color: var(--muted); text-align: center; font-size: 12px; line-height: 1.8; }
+.footer-links a { font-weight: 600; }
+.account-footer { text-align: center; color: #766253; font-size: 11px; padding: 0 20px 28px; }
+@media (max-width: 760px) {
+  .account-header { padding: 22px 20px; } .account-brand { font-size: 18px; }
+  .account-shell { width: calc(100% - 32px); grid-template-columns: 1fr; margin-top: 0; border-radius: 18px; }
+  .account-story { padding: 22px 28px; gap: 16px; } .account-story h2 { font-size: 28px; margin: 14px 0 0; }
+  .account-story h2 br { display: none; } .account-story p, .story-footer { display: none; }
+  .login-container, .register-container { padding: 28px; } .account-title { font-size: 30px; }
+}
+@media (max-width: 380px) { .account-header { flex-wrap: wrap; gap: 8px; } .form-grid { grid-template-columns: 1fr; } .login-container, .register-container, .account-story { padding: 24px 20px; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+.account-shell { border-radius: 16px; box-shadow: none; }
+.account-story { padding: 40px; gap: 28px; justify-content: flex-start; }
+.account-story h2 { margin: 0 0 18px; font-size: 44px; }
+.account-product { margin-top: auto; }
+.account-product img { display: block; width: 100%; height: 250px; object-fit: cover; border-radius: 8px; }
+.account-product figcaption { margin-top: 10px; color: #f3dbc4; font-size: 11px; }
+@media(max-width:760px) { .account-story { padding: 24px 28px; } .account-story h2 { font-size: 28px; margin: 0; } .account-product { display:none; } }
+@media(max-width:380px) { .account-story { padding:24px 20px; } }
+.account-product { margin-top: 0; }
+.account-product img { height: 320px; }

@@ -1,11 +1,14 @@
 {
-  "name": "Amendoim Sabor Arte",
+  "name": "amendoim-sabor-arte",
+  "engines": { "node": ">=22" },
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.cjs",
+    "dev:next": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node server.cjs",
+    "start:next": "next start",
     "lint": "next lint"
   },
   "dependencies": {

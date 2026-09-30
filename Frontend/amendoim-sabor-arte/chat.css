@@ -34,3 +34,6 @@
   .chat-home { padding-bottom: 6px; }
   .chat-log { padding: 12px; }
 }
+
+.chat-avatar { font: 22px Georgia,serif; }
+.chat-note { color:#766253; }

@@ -1,59 +1,23 @@
-// Mobile Menu Toggle
-const mobileMenuBtn = document.getElementById("mobileMenuBtn")
-const navLinks = document.getElementById("navLinks")
-
-mobileMenuBtn.addEventListener("click", () => {
-  navLinks.classList.toggle("active")
-})
-
-// Close mobile menu when clicking on a link
-navLinks.querySelectorAll("a").forEach((link) => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("active")
-  })
-})
-
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault()
-    const target = document.querySelector(this.getAttribute("href"))
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      })
-    }
-  })
-})
-
-// Form submission handler
-const contatoForm = document.getElementById("contatoForm")
-contatoForm.addEventListener("submit", (e) => {
-  e.preventDefault()
-  alert("Mensagem enviada com sucesso! Entraremos em contato em breve.")
-  contatoForm.reset()
-})
-
-// Add scroll animation to sections
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px",
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const navLinks = document.getElementById('navLinks');
+function setMenu(open) {
+  navLinks.classList.toggle('active', open);
+  mobileMenuBtn.setAttribute('aria-expanded', String(open));
+  mobileMenuBtn.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
 }
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = "1"
-      entry.target.style.transform = "translateY(0)"
-    }
-  })
-}, observerOptions)
-
-// Observe all sections
-document.querySelectorAll("section").forEach((section) => {
-  section.style.opacity = "0"
-  section.style.transform = "translateY(20px)"
-  section.style.transition = "opacity 0.6s ease, transform 0.6s ease"
-  observer.observe(section)
-})
+mobileMenuBtn.addEventListener('click', () => setMenu(!navLinks.classList.contains('active')));
+navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && navLinks.classList.contains('active')) { setMenu(false); mobileMenuBtn.focus(); }
+});
+const contatoForm = document.getElementById('contatoForm');
+contatoForm.addEventListener('submit', event => {
+  event.preventDefault();
+  if (!contatoForm.reportValidity()) return;
+  const data = new FormData(contatoForm);
+  const text = `Nome: ${data.get('name')}\nE-mail para resposta: ${data.get('email')}\n\n${data.get('message')}`;
+  const status = document.getElementById('contact-status');
+  status.hidden = false;
+  status.textContent = 'Seu aplicativo de e-mail será aberto. Confira o rascunho e envie a mensagem por ele. Se não abrir, escreva para edilsonrmaia@hotmail.com.';
+  location.href = `mailto:edilsonrmaia@hotmail.com?subject=${encodeURIComponent('Contato pelo site Sabor Arte')}&body=${encodeURIComponent(text)}`;
+});
