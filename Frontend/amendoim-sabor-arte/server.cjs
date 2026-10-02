@@ -7,6 +7,8 @@ const scrypt = promisify(scryptCallback);
 const root = __dirname;
 const dataDir = process.env.DATA_DIR || path.join(root, 'data');
 const usersFile = path.join(dataDir, 'users.json');
+const adminsFile = path.join(dataDir, 'admins.json');
+const operations = require('./operations.cjs').createOperations(dataDir);
 const port = Number(process.env.PORT || 3000);
 const sessions = new Map();
 const attempts = new Map();
@@ -14,6 +16,8 @@ const sessionLifetime = 8 * 60 * 60 * 1000;
 let writes = Promise.resolve();
 const publicFiles = new Set(['index.html', 'login.html', 'register.html', 'styles.css', 'account.css', 'amendoim-caramelizado.png', 'script.js', 'orders.js', 'auth.js', 'chat.js', 'chat.css', 'pedidos.css']);
 const protectedFiles = new Set(['pedidos.html', 'pedidos copy.html']);
+for (const file of ['admin.css', 'admin.js', 'commerce.js', 'my-orders.js']) publicFiles.add(file);
+for (const file of ['admin.html', 'meus-pedidos.html']) protectedFiles.add(file);
 const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png' };
 
 function reply(res, status, body) {
@@ -21,7 +25,18 @@ function reply(res, status, body) {
   res.end(JSON.stringify(body));
 }
 function error(status, message) { return Object.assign(new Error(message), { status }); }
-function userView(user) { return { id: user.id, name: user.name, email: user.email, phone: user.phone }; }
+function userView(user) { return { id: user.id, name: user.name, email: user.email, phone: user.phone, role: 'client' }; }
+async function accessView(user) {
+  const admins = JSON.parse(await fs.readFile(adminsFile, 'utf8'));
+  return { ...userView(user), role: admins.includes(user.id) ? 'admin' : 'client' };
+}
+async function currentUser(req) {
+  const entry = session(req);
+  if (!entry) return null;
+  const user = (await readUsers()).find(user => user.id === entry.user.id);
+  if (!user) { sessions.delete(entry.token); return null; }
+  return accessView(user);
+}
 function session(req) {
   const token = /(?:^|;\s*)sabor_session=([a-f0-9]{64})(?:;|$)/.exec(req.headers.cookie || '')?.[1];
   const entry = sessions.get(token);
@@ -67,7 +82,14 @@ function rateLimit(req) {
   if (++record.count > 20) throw error(429, 'Muitas tentativas. Aguarde um minuto e tente novamente.');
 }
 async function api(req, res, pathname) {
-  if (pathname === '/api/session' && req.method === 'GET') return reply(res, 200, { user: session(req)?.user || null });
+  if (pathname === '/api/session' && req.method === 'GET') return reply(res, 200, { user: await currentUser(req) });
+  if (['/api/catalog', '/api/orders'].includes(pathname) || pathname.startsWith('/api/admin/')) {
+    const user = await currentUser(req);
+    if (pathname.startsWith('/api/admin/') && (!user || user.role !== 'admin')) throw error(user ? 403 : 401, 'Acesso exclusivo da administração.');
+    const payload = req.method === 'POST' ? await body(req) : null;
+    const result = await operations.handle(req, user, pathname, payload);
+    return reply(res, pathname === '/api/orders' && req.method === 'POST' ? 201 : 200, result);
+  }
   if (!['/api/register', '/api/login', '/api/logout'].includes(pathname)) return reply(res, 404, { message: 'Recurso não encontrado.' });
   if (req.method !== 'POST') return reply(res, 405, { message: 'Método não permitido.' });
   const payload = await body(req);
@@ -104,7 +126,7 @@ async function api(req, res, pathname) {
   const expected = Buffer.from(user?.passwordHash || '00'.repeat(64), 'hex');
   if (!user || expected.length !== candidate.length || !timingSafeEqual(candidate, expected)) throw error(401, 'E-mail ou senha incorretos.');
   setSession(req, res, user);
-  return reply(res, 200, { user: userView(user) });
+  return reply(res, 200, { user: await accessView(user) });
 }
 const server = http.createServer(async (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
@@ -122,10 +144,12 @@ const server = http.createServer(async (req, res) => {
     const file = pathname === '/' ? 'index.html' : pathname.slice(1);
     if (file === 'pedido.html') { res.writeHead(302, { Location: '/pedidos.html' }); return res.end(); }
     if (!publicFiles.has(file) && !protectedFiles.has(file)) return reply(res, 404, { message: 'Página não encontrada.' });
-    if (protectedFiles.has(file) && !session(req)) {
-      res.writeHead(302, { Location: '/login.html?next=pedidos.html' });
+    const user = protectedFiles.has(file) ? await currentUser(req) : null;
+    if (protectedFiles.has(file) && !user) {
+      res.writeHead(302, { Location: '/login.html?next=' + encodeURIComponent(file === 'pedidos copy.html' ? 'pedidos.html' : file) });
       return res.end();
     }
+    if (file === 'admin.html' && user.role !== 'admin') throw error(403, 'Esta área é exclusiva da administração.');
     if (file === 'pedidos copy.html') {
       res.writeHead(302, { Location: '/pedidos.html' });
       return res.end();
@@ -144,7 +168,11 @@ server.headersTimeout = 10000;
 async function start() {
   await fs.mkdir(dataDir, { recursive: true });
   try { await fs.writeFile(usersFile, '[]\n', { flag: 'wx', mode: 0o600 }); } catch (err) { if (err.code !== 'EEXIST') throw err; }
+  try { await fs.writeFile(adminsFile, '[]\n', { flag: 'wx', mode: 0o600 }); } catch (err) { if (err.code !== 'EEXIST') throw err; }
   await readUsers();
+  await operations.initialize();
+  const closingTimer = setInterval(() => operations.closeDays().catch(err => console.error('Falha no fechamento:', err.message)), 60000);
+  closingTimer.unref();
   server.listen(port, '127.0.0.1', () => console.log(`Site disponível em http://localhost:${server.address().port}`));
 }
 server.on('error', err => { console.error('Não foi possível iniciar:', err.message); process.exitCode = 1; });

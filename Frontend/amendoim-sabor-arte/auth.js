@@ -43,8 +43,10 @@
       button.disabled = true;
       button.textContent = 'Aguarde…';
       try {
-        await request(registerForm ? '/api/register' : '/api/login', payload);
-        location.assign(registerForm ? 'login.html?registered=1&next=pedidos.html' : 'pedidos.html');
+        const result = await request(registerForm ? '/api/register' : '/api/login', payload);
+        const next = new URLSearchParams(location.search).get('next');
+        const destination = ['pedidos.html', 'meus-pedidos.html', 'admin.html'].includes(next) && (next !== 'admin.html' || result.user?.role === 'admin') ? next : result.user?.role === 'admin' ? 'admin.html' : 'pedidos.html';
+        location.assign(registerForm ? 'login.html?registered=1&next=pedidos.html' : destination);
       } catch (err) { showError(err.message); }
       finally { button.disabled = false; button.textContent = label; }
     });
@@ -56,6 +58,7 @@
       if (isOrders && !user) { location.replace('login.html?next=pedidos.html'); return; }
       document.querySelectorAll('[data-guest]').forEach(element => { element.hidden = !!user; });
       document.querySelectorAll('[data-member]').forEach(element => { element.hidden = !user; });
+      document.querySelectorAll('[data-admin]').forEach(element => { element.hidden = user?.role !== 'admin'; });
       if (user) {
         document.querySelectorAll('[data-user-name]').forEach(element => { element.textContent = `Olá, ${user.name}`; });
         if (isOrders) {

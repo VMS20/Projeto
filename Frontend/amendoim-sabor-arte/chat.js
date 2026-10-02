@@ -7,7 +7,7 @@
       ['É feito artesanalmente?', 'Sim. O produto é apresentado pela marca como amendoim caramelizado artesanal.'],
       ['Quais sabores estão disponíveis?', 'O site apresenta amendoim caramelizado. Consulte o atendimento para confirmar os sabores disponíveis hoje.'],
       ['Quais são os pesos das embalagens?', 'A tela de pedidos apresenta uma embalagem de 100 g. Confirme com a equipe os tamanhos disponíveis para compra.'],
-      ['Quanto custa?', 'A prévia de pedidos mostra valores demonstrativos. Consulte a equipe para confirmar o preço atual.'],
+      ['Quanto custa?', 'Na tela Fazer pedido, escolha um produto para consultar o preço atual e o total com a entrega. Confira o resumo antes de confirmar.'],
       ['Contém corante?', 'A descrição do produto menciona corante vermelho. Consulte o rótulo ou o atendimento para saber qual corante é utilizado.'],
       ['Contém glúten, leite ou lactose?', 'Ainda não temos o rótulo completo cadastrado. Confirme os ingredientes e avisos de alergênicos com a equipe antes de consumir.'],
       ['Pode haver contato com outros alergênicos?', 'O produto contém amendoim. As informações sobre outros alergênicos e contato durante a produção precisam ser confirmadas com a equipe.'],
@@ -23,14 +23,14 @@
       ['A embalagem informa fabricação e validade?', pending]
     ]],
     ['Como comprar', [
-      ['Como faço um pedido pelo site?', 'A tela de pedidos reúne produto, quantidade, dados do cliente, entrega e pagamento. Por enquanto, ela é um protótipo e não envia pedidos. Fale com a equipe para combinar sua compra.'],
+      ['Como faço um pedido pelo site?', 'Crie uma conta e entre. Em Fazer pedido, escolha o produto e a quantidade, preencha os dados de entrega ou selecione retirada, escolha o pagamento e confirme. O site mostrará o número do pedido.'],
       ['Preciso criar uma conta?', 'Você pode conhecer os produtos sem entrar. Para acessar a página de pedidos, crie sua conta em “Criar conta” e entre com seu e-mail e senha.'],
       ['Posso pedir pelo WhatsApp?', 'O planejamento prevê atendimento pelo WhatsApp. Confirme esse canal pelo telefone de contato informado no site: (11) 99901-6165.'],
       ['Existe pedido mínimo?', pending],
-      ['Como consulto a disponibilidade?', 'O estoque ainda não está conectado ao site. Consulte a equipe sobre o produto e a quantidade desejada.'],
+      ['Como consulto a disponibilidade?', 'A tela Fazer pedido mostra as unidades disponíveis do produto selecionado. A quantidade é conferida novamente ao confirmar para evitar pedidos sem estoque.'],
       ['Posso alterar a quantidade após confirmar?', 'Fale com o atendimento e informe seu pedido e a alteração desejada. A equipe precisa confirmar se ainda é possível alterá-lo.'],
-      ['Como sei se meu pedido foi recebido?', 'Este protótipo não registra pedidos nem envia confirmações. Para compras combinadas com a equipe, solicite a confirmação pelo canal de atendimento.'],
-      ['Como acompanho meu pedido?', 'O acompanhamento online ainda não está disponível. Consulte o atendimento com a identificação do pedido.']
+      ['Como sei se meu pedido foi recebido?', 'Após confirmar, o site mostra o número do pedido. Ele também aparece em Meus pedidos, com o status Recebido. Se houver erro, confira a mensagem antes de tentar novamente.'],
+      ['Como acompanho meu pedido?', 'Entre na sua conta e abra Meus pedidos. Você verá o preparo, a situação do pagamento e a previsão de entrega quando a loja agendar.']
     ]],
     ['Pagamento', [
       ['Quais formas de pagamento são aceitas?', 'A tela prevê Pix, cartão e dinheiro, mas ainda não processa pagamentos. Confirme as formas aceitas com a equipe.'],
@@ -38,12 +38,12 @@
       ['Posso pagar na entrega?', pending],
       ['Aceitam crédito e débito?', 'Essas opções aparecem no protótipo. A disponibilidade precisa ser confirmada com o atendimento.'],
       ['Posso parcelar?', pending],
-      ['Como solicito troco?', 'A tela tem um campo para troco. Como o pedido ainda não é enviado pelo site, combine o pagamento em dinheiro e o troco diretamente com a equipe.'],
+      ['Como solicito troco?', 'Selecione Dinheiro em Fazer pedido e informe no campo Troco o valor que você entregará. Esse valor precisa ser igual ou maior que o total do pedido.'],
       ['Paguei, mas aparece pendente. O que faço?', 'Peça ao atendimento para verificar a compra. Este chat não tem acesso a transações. Não envie senha ou dados completos de cartão.']
     ]],
     ['Entrega', [
       ['Entregam no meu bairro ou cidade?', 'A área de entrega ainda não está cadastrada. Informe seu bairro ou CEP diretamente ao atendimento para consultar.'],
-      ['Quanto custa a entrega?', 'A taxa exibida na tela de pedidos é demonstrativa. Confirme o valor para seu endereço com a equipe.'],
+      ['Quanto custa a entrega?', 'A taxa configurada pela loja aparece no resumo em Fazer pedido. Selecionar Retirada no local remove essa taxa.'],
       ['Qual é o prazo de entrega?', pending],
       ['Posso agendar uma entrega?', pending],
       ['Posso retirar no local?', 'O protótipo prevê retirada. Confirme disponibilidade, endereço e horário com a equipe antes de se deslocar.'],

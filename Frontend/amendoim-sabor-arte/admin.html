@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administração — Amendoim Sabor Arte</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <a class="skip-link" href="#management">Ir para a administração</a>
+  <header class="management-header"><a class="logo" href="index.html">Amendoim<span>Sabor Arte</span></a><div class="header-actions"><span data-user-name>Administração</span><a href="index.html">Ver site</a><button class="nav-logout" data-logout type="button">Sair</button></div></header>
+  <main class="management" id="management" hidden>
+    <div class="page-heading"><div><h1>Administração da loja</h1><p>Do pedido recebido à entrega concluída.</p></div><button type="button" id="refresh" class="secondary">Atualizar dados</button></div>
+    <nav class="section-nav" aria-label="Áreas da administração"><a href="#pedidos" aria-current="page">Pedidos</a><a href="#estoque">Estoque</a><a href="#entregas">Entregas</a><a href="#fechamento">Fechamento</a></nav>
+    <p id="feedback" role="status" aria-live="polite" hidden></p>
+    <section id="pedidos" class="management-section" aria-labelledby="orders-heading">
+      <div class="section-heading"><div><h2 id="orders-heading">Pedidos</h2><p>Confirme pagamentos e acompanhe cada etapa.</p></div><label>Mostrar <select id="order-filter"><option value="open">Em andamento</option><option value="all">Todos os pedidos</option><option value="concluido">Concluídos</option><option value="cancelado">Cancelados</option></select></label></div>
+      <div id="admin-orders"></div>
+    </section>
+    <section id="estoque" class="management-section" hidden aria-labelledby="inventory-heading">
+      <div class="section-heading"><div><h2 id="inventory-heading">Estoque</h2><p>A baixa acontece ao receber um pedido. Cancelamentos devolvem as unidades ao estoque.</p></div></div>
+      <p id="inventory-notice" class="notice"></p><div id="inventory-list"></div>
+      <details class="form-disclosure"><summary>Cadastrar produto</summary><form id="new-product" class="inline-form"><label>Nome<input name="name" maxlength="100" required></label><label>Embalagem<input name="unit" maxlength="40" placeholder="100g" required></label><label>Preço (R$)<input name="price" type="number" min="0.01" max="10000" step="0.01" required></label><label>Estoque mínimo<input name="minimum" type="number" min="0" max="1000000" value="10" required></label><button class="primary">Cadastrar produto</button></form></details>
+      <h3>Últimas movimentações</h3><div class="table-scroll"><table><caption class="visually-hidden">Histórico de movimentações de estoque</caption><thead><tr><th>Data</th><th>Produto</th><th>Unidades</th><th>Motivo</th></tr></thead><tbody id="movements"></tbody></table></div>
+    </section>
+    <section id="entregas" class="management-section" hidden aria-labelledby="deliveries-heading">
+      <div class="section-heading"><div><h2 id="deliveries-heading">Entregas</h2><p>Pedidos agrupados automaticamente por cidade e bairro, do mais antigo ao mais recente.</p></div></div>
+      <p class="notice">Selecione pedidos da mesma região para definir data, período e responsável. A lista organiza a separação; não calcula trajetos.</p>
+      <form id="delivery-schedule"><div class="inline-form"><label>Data<input name="scheduledDate" type="date" required></label><label>Período<input name="window" placeholder="Ex.: 14h às 18h" maxlength="80" required></label><label>Responsável<input name="driver" maxlength="100" required></label><button class="primary">Agendar selecionados</button></div><div id="delivery-groups"></div></form>
+      <details class="form-disclosure"><summary>Taxa de entrega</summary><form id="delivery-fee" class="inline-form"><label>Taxa por pedido (R$)<input name="fee" type="number" min="0" max="10000" step="0.01" required></label><button class="primary">Salvar taxa</button></form><p class="small">Alterações valem para novos pedidos. Pedidos recebidos mantêm os valores confirmados.</p></details>
+    </section>
+    <section id="fechamento" class="management-section" hidden aria-labelledby="closing-heading">
+      <div class="section-heading"><div><h2 id="closing-heading">Fechamento diário</h2><p>Os dias anteriores são fechados automaticamente no horário de São Paulo.</p></div><button type="button" id="export-closing" class="secondary">Baixar relatório CSV</button></div>
+      <p class="notice">O caixa considera pagamentos recebidos e estornos confirmados pela administração. Pedidos pendentes não entram no recebido. A confirmação registra o pagamento; não faz cobrança bancária.</p>
+      <div id="daily-summary"></div><h3>Fechamentos anteriores</h3><div id="closing-history"></div>
+    </section>
+  </main>
+  <p id="load-error" class="management" role="alert" hidden></p>
+  <script src="commerce.js" defer></script><script src="auth.js" defer></script><script src="admin.js" defer></script>
+</body>
+</html>

@@ -74,6 +74,8 @@
                     </a>
                 </li>
 
+                <li><a href="meus-pedidos.html">Meus pedidos</a></li>
+                <li data-admin hidden><a href="admin.html">Administração</a></li>
                 <li><button type="button" class="btn-sair" data-logout>Sair da conta</button></li>
             </ul>
 
@@ -98,7 +100,7 @@
             <h1>Realizar pedido</h1>
 
             <p>
-                Explore a prévia do pedido. Os valores são demonstrativos; o envio de pedidos ainda está em desenvolvimento.
+                Escolha o produto disponível, confira os valores e confirme seu pedido. Acompanhe as etapas em Meus pedidos.
             </p>
 
         </div>
@@ -109,6 +111,7 @@
              1 - PRODUTOS
         ========================== -->
 
+        <form id="order-form">
         <section class="card">
 
             <div class="titulo-secao">
@@ -138,11 +141,10 @@
 
                 <div class="produto-info">
 
-                    <h3>Amendoim doce tradicional</h3>
-
-                    <p>Embalagem: 100g</p>
-
-                    <strong>R$ 6,50</strong>
+                    <label for="product-choice">Produto</label>
+                    <select id="product-choice" required><option value="">Carregando produtos…</option></select>
+                    <p id="product-unit">Embalagem: 100g</p>
+                    <strong id="product-price">R$ 6,50</strong>
 
                 </div>
 
@@ -175,7 +177,8 @@
             </div>
 
 
-            <p class="product-caption">Imagem ilustrativa. Embalagem e preço demonstrativos.</p>
+            <p class="product-caption">Imagem ilustrativa. Confira o preço e a embalagem selecionados.</p>
+            <p id="stock-notice" role="status">Consultando disponibilidade…</p>
 
         </section>
 
@@ -248,25 +251,9 @@
 
                     <input
                         type="email"
-                        id="email"
+                        id="email" readonly
                         name="email"
                         placeholder="exemplo@email.com"
-                    >
-
-                </div>
-
-
-                <div class="campo">
-
-                    <label for="cpf">
-                        CPF
-                    </label>
-
-                    <input
-                        type="text"
-                        id="cpf"
-                        name="cpf"
-                        placeholder="000.000.000-00"
                     >
 
                 </div>
@@ -363,7 +350,7 @@
                         Estado *
                     </label>
 
-                    <select id="estado" name="estado">
+                    <select id="estado" name="estado" required>
 
                         <option value="">
                             Selecione
@@ -380,6 +367,7 @@
                         <option value="MG">
                             Minas Gerais
                         </option>
+                        <option value="AC">Acre</option><option value="AL">Alagoas</option><option value="AP">Amapá</option><option value="AM">Amazonas</option><option value="BA">Bahia</option><option value="CE">Ceará</option><option value="DF">Distrito Federal</option><option value="ES">Espírito Santo</option><option value="GO">Goiás</option><option value="MA">Maranhão</option><option value="MT">Mato Grosso</option><option value="MS">Mato Grosso do Sul</option><option value="PA">Pará</option><option value="PB">Paraíba</option><option value="PR">Paraná</option><option value="PE">Pernambuco</option><option value="PI">Piauí</option><option value="RN">Rio Grande do Norte</option><option value="RS">Rio Grande do Sul</option><option value="RO">Rondônia</option><option value="RR">Roraima</option><option value="SC">Santa Catarina</option><option value="SE">Sergipe</option><option value="TO">Tocantins</option>
 
                     </select>
 
@@ -749,6 +737,7 @@
 
                 <input
                     type="checkbox"
+                    id="order-terms"
                     required
                 >
 
@@ -760,24 +749,25 @@
 
 
             <button
-                type="button" disabled aria-describedby="order-status"
+                type="submit" disabled aria-describedby="order-status"
                 class="btn-finalizar"
             >
-                Envio de pedidos em breve
+                Confirmar pedido
             </button>
 
 
-            <p class="seguranca" id="order-status">
-                Esta prévia não envia pedidos nem realiza cobranças.
+            <p class="seguranca" id="order-status" role="status" aria-live="polite">
+                O pagamento será confirmado pela loja. O site não realiza cobranças.
             </p>
 
         </section>
 
 
+        </form>
     </main>
 
 
-    <script src="auth.js" defer></script><script src="orders.js" defer></script>
+    <script src="commerce.js" defer></script><script src="auth.js" defer></script><script src="orders.js" defer></script>
 </body>
 
 </html>

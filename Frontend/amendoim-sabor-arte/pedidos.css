@@ -904,6 +904,10 @@ body { background: #fcf6eb; color: #432c20; }
 .produto img { object-fit:cover; border-radius:8px; }
 .card { box-shadow:none; }
 .btn-finalizar:disabled { background:#705943; cursor:not-allowed; transform:none; }
+.produto-info { min-width:0; }
+.produto-info select { font:inherit; max-width:100%; width:100%; border:1px solid #ac896d; border-radius:8px; padding:10px; background:#fffcf7; color:#432c20; margin:6px 0; }
+#stock-notice { margin-top:12px; font-size:14px; color:#643310; }
+select:focus-visible { outline:3px solid #d2691e; outline-offset:3px; }
 .campo input::placeholder { color:#766253; opacity:1; }
 input:focus-visible, button:focus-visible, a:focus-visible { outline:3px solid #d2691e; outline-offset:3px; }
 .finalizar { border-top-width:1px; border-top-color:#eadbca; }

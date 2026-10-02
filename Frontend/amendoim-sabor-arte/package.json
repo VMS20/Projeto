@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "admin": "node grant-admin.cjs",
     "dev": "node server.cjs",
     "dev:next": "next dev",
     "build": "next build",

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Meus pedidos — Amendoim Sabor Arte</title><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="admin.css"></head>
+<body>
+  <a class="skip-link" href="#my-orders">Ir para meus pedidos</a>
+  <header class="management-header"><a class="logo" href="index.html">Amendoim<span>Sabor Arte</span></a><div class="header-actions"><a href="pedidos.html">Fazer pedido</a><a href="admin.html" data-admin hidden>Administração</a><button class="nav-logout" type="button" data-logout>Sair</button></div></header>
+  <main class="management" id="my-orders" hidden><div class="page-heading"><div><h1>Meus pedidos</h1><p>Acompanhe o preparo, o pagamento e a entrega dos seus pedidos.</p></div><button class="secondary" type="button" id="refresh">Atualizar pedidos</button></div><p id="feedback" role="status" aria-live="polite" hidden></p><div id="customer-orders"></div></main>
+  <p id="load-error" class="management" role="alert" hidden></p>
+  <script src="commerce.js" defer></script><script src="auth.js" defer></script><script src="my-orders.js" defer></script>
+</body>
+</html>
