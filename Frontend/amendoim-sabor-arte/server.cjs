@@ -73,6 +73,18 @@ async function readUsers() {
   if (!Array.isArray(users)) throw new Error('Arquivo de usuários inválido.');
   return users;
 }
+async function initializeTestAccounts() {
+  if ((await readUsers()).length !== 0) return;
+  const accounts = JSON.parse(await fs.readFile(path.join(root, 'fixtures', 'test-accounts.json'), 'utf8'));
+  const admins = JSON.parse(await fs.readFile(adminsFile, 'utf8'));
+  const users = accounts.map(({ role, ...user }) => ({ ...user, createdAt: new Date().toISOString() }));
+  const adminIds = [...new Set([...admins, ...accounts.filter(user => user.role === 'admin').map(user => user.id)])];
+  for (const [file, value] of [[adminsFile, adminIds], [usersFile, users]]) {
+    const temporary = file + '.tmp';
+    await fs.writeFile(temporary, JSON.stringify(value, null, 2), { mode: 0o600 });
+    await fs.rename(temporary, file);
+  }
+}
 function rateLimit(req) {
   const now = Date.now();
   for (const [key, value] of attempts) if (value.until <= now) attempts.delete(key);
@@ -169,7 +181,7 @@ async function start() {
   await fs.mkdir(dataDir, { recursive: true });
   try { await fs.writeFile(usersFile, '[]\n', { flag: 'wx', mode: 0o600 }); } catch (err) { if (err.code !== 'EEXIST') throw err; }
   try { await fs.writeFile(adminsFile, '[]\n', { flag: 'wx', mode: 0o600 }); } catch (err) { if (err.code !== 'EEXIST') throw err; }
-  await readUsers();
+  await initializeTestAccounts();
   await operations.initialize();
   const closingTimer = setInterval(() => operations.closeDays().catch(err => console.error('Falha no fechamento:', err.message)), 60000);
   closingTimer.unref();

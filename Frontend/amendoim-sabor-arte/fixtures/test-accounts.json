@@ -1,0 +1,20 @@
+[
+  {
+    "id": "4f3eae53-a405-48e4-924d-0410db01ce60",
+    "name": "Administrador",
+    "email": "teste@uninove.com.br",
+    "phone": "",
+    "salt": "0613e236625aea11ad8abcb327f601ea",
+    "passwordHash": "28cbeca7cd5789b47a0d59bdaa823d550fd6882b692a880dac9d1f9f9be8c2adbb15e47cca857e92f27557591385ca74818646787831cdc5ad2498aa49f24d94",
+    "role": "admin"
+  },
+  {
+    "id": "006d9b7b-de1c-42d0-b466-8a706ed53e9c",
+    "name": "Cliente Teste",
+    "email": "cliente@uninove.com.br",
+    "phone": "11999999999",
+    "salt": "70eccfce837cc9df032d054d8aba09fc",
+    "passwordHash": "9f36f015ac024db30d0c21f3b736928b588a8065293f611214625086d431165c13bac6694e8e765623dcc0f85095f6bcb3400d699216b0255e6a4568895806b5",
+    "role": "client"
+  }
+]
